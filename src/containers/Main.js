@@ -9,6 +9,7 @@ import Contact from "../pages/contact/ContactComponent";
 import Projects from "../pages/projects/Projects";
 import { settings } from "../portfolio.js";
 import Error404 from "../pages/errors/error404/Error";
+import Bubble from "../pages/bubble/bubble";
 
 export default class Main extends Component {
   render() {
@@ -25,6 +26,10 @@ export default class Main extends Component {
                 <Home {...props} theme={this.props.theme} />
               )
             }
+          />
+          <Route
+            path="/bubble"
+            render={(props) => <Bubble {...props} theme={this.props.theme} />}
           />
           <Route
             path="/home"
