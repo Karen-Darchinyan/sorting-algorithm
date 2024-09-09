@@ -11,12 +11,17 @@ export default function Greeting(props) {
   return (
     <Fade bottom duration={2000} distance="40px">
       <div className="greet-main" id="greeting">
+        <div>
+          <h1 className="skills-header" style={{ color: theme.text }}>
+            {greeting.topic}
+          </h1>
+        </div>
         <div className="greeting-main">
           <div className="greeting-text-div">
             <div>
-              <h1 className="greeting-text" style={{ color: theme.text }}>
+              <h3 className="greeting-text" style={{ color: theme.text }}>
                 {greeting.title}
-              </h1>
+              </h3>
               {greeting.nickname && (
                 <h2 className="greeting-nickname" style={{ color: theme.text }}>
                   ( {greeting.nickname} )

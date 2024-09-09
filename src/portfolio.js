@@ -19,6 +19,7 @@ const seo = {
 
 //Home Page
 const greeting = {
+  topic: "Տեսակավորման ալգորիթմների համեմատական արդյունավետության որոշման կայք",
   title: "Karen Darchinyan",
   logo_name: "Algoritmes",
   nickname: "",
@@ -42,13 +43,13 @@ const socialMediaLinks = [
 
   {
     name: "Github",
-    link: "",
+    link: "https://www.instagram.com/layman_brother/",
     fontAwesomeIcon: "fa-github", // Reference https://fontawesome.com/icons/github?style=brands
     backgroundColor: "#181717", // Reference https://simpleicons.org/?q=github
   },
   {
     name: "LinkedIn",
-    link: "",
+    link: "https://www.instagram.com/layman_brother/",
     fontAwesomeIcon: "fa-linkedin-in", // Reference https://fontawesome.com/icons/linkedin-in?style=brands
     backgroundColor: "#0077B5", // Reference https://simpleicons.org/?q=linkedin
   },
@@ -60,13 +61,13 @@ const socialMediaLinks = [
   },
   {
     name: "Gmail",
-    link: "",
+    link: "https://www.instagram.com/layman_brother/",
     fontAwesomeIcon: "fa-google", // Reference https://fontawesome.com/icons/google?style=brands
     backgroundColor: "#D14836", // Reference https://simpleicons.org/?q=gmail
   },
   {
     name: "X-Twitter",
-    link: "",
+    link: "https://www.instagram.com/layman_brother/",
     fontAwesomeIcon: "fa-x-twitter", // Reference https://fontawesome.com/icons/x-twitter?f=brands&s=solid
     backgroundColor: "#000000", // Reference https://simpleicons.org/?q=x
   },
@@ -90,9 +91,12 @@ const skills = {
       title: "Պղպջակային տեսակավորում",
       fileName: "DataScienceImg",
       skills: [
-        "⚡ Developing highly scalable production ready models for various deeplearning and statistical use cases",
-        "⚡ Experience of working with Computer Vision and NLP projects",
-        "⚡ Complex quantitative modelling for dynamic forecasting and time series analysis",
+        "⚡ Մենք անցնում ենք ամբողջ զանգվածով և համեմատում ընթացիկ տարրը հաջորդի հետ:",
+        "⚡ Եթե այն ավելի մեծ է, քան հաջորդը, ապա մենք դրանք վերադասավորում ենք:",
+        "⚡ Եթե ոչ ավելին, ավելացրեք ցուցիչը և համեմատեք հաջորդ երկու տարրերը:",
+        "⚡ Հասնելով վերջում մենք գիտենք, որ զանգվածի ամենամեծ տարրը գտնվում է վերջին դիրքում:",
+        "⚡ Մենք կրկնում ենք գործընթացը N անգամ (որտեղ N-ը զանգվածի երկարությունն է) և ամեն անգամ, երբ անցնում ենք վերջին տեսակավորված տարրը:",
+
       ],
       softwareSkills: [
         {
@@ -135,9 +139,9 @@ const skills = {
       title: "Կոկտեյլային տեսակավորում",
       fileName: "FullStackImg",
       skills: [
-        "⚡ Building responsive website front end using React-Redux",
-        "⚡ Developing mobile applications using Flutter, React Native and solo android apps using Kotlin",
-        "⚡ Creating application backend in Node, Express & Flask",
+        "⚡ Սկսեք զանգվածի սկզբից և օգտագործեք փուչիկների տեսակավորումը՝ ամենամեծը զանգվածի վերջը տեղափոխելու համար:",
+        "⚡ Սկսեք զանգվածի վերջից և ամենափոքր միավորը տեղափոխեք զանգվածի սկիզբ:",
+        "⚡ Կրկնել 1-ին և 2-րդ քայլերը, մինչև զանգվածը դասավորվի:",
       ],
       softwareSkills: [
         {
@@ -217,10 +221,11 @@ const skills = {
       title: "Ներդրմամբ տեսակավորում",
       fileName: "CloudInfraImg",
       skills: [
-        "⚡ Experience working on multiple cloud platforms",
-        "⚡ Hosting and maintaining websites on virtual machine instances along with integration of databases",
-        "⚡ Deploying deep learning models on cloud to use on mobile devices",
-        "⚡ Setting up streaming jobs from DB to Server or vice-versa on GCP and AWS",
+        "⚡ Մենք սկսում ենք զանգվածի առաջին տարրից, որն արդեն դասավորված է համարվում:",
+        "⚡ Վերցնում ենք հաջորդ տարրը և համեմատում դասավորված մասի նախորդ տարրերի հետ:",
+        "⚡ Եթե նոր տարրն ավելի փոքր է, ապա մենք նախորդ տարրերը տեղափոխում ենք աջ՝ տարածք ազատելու համար:",
+        "⚡ Տեսակավորված տարրերի մեջ տեղադրում ենք նոր տարր ճիշտ դիրքում:",
+        "⚡ Մենք կրկնում ենք այս գործընթացը յուրաքանչյուր լրացուցիչ տարրի համար, մինչև ամբողջ զանգվածը տեսակավորվի:",
       ],
       softwareSkills: [
         {
@@ -285,9 +290,10 @@ const skills = {
       title: "Շելլի տեսակավորում",
       fileName: "DesignImg",
       skills: [
-        "⚡ Designing highly attractive user interface for mobile and web applications",
-        "⚡ Customizing logo designs and building logos from scratch",
-        "⚡ Creating the flow of application functionalities to optimize user experience",
+        "⚡ Ընտրելով մեկնարկային միջակայքը ℎ, սովորաբար զանգվածի երկարության կեսը:",
+        "⚡ Յուրաքանչյուր քայլում հեռավորության վրա գտնվող տարրեր h-ն տեսակավորվում է ներդիրի տեսակավորման միջոցով:",
+        "⚡ Ընդմիջումը կրճատվում է, օրինակ, բաժանվում է 2-ի:",
+        "⚡ Ալգորիթմը կրկնվում է այնքան ժամանակ, մինչև միջակայքը հավասարվի 1-ի, և կատարվի ամբողջ զանգվածի վերջնական տեսակավորումը։",
       ],
       softwareSkills: [
         {
@@ -324,9 +330,10 @@ const skills = {
       title: "Միաձուլման տեսակավորում",
       fileName: "DesignImg",
       skills: [
-        "⚡ Designing highly attractive user interface for mobile and web applications",
-        "⚡ Customizing logo designs and building logos from scratch",
-        "⚡ Creating the flow of application functionalities to optimize user experience",
+        "⚡ Բաժանում. Բնօրինակ զանգվածը բաժանվում է երկու մասի, մինչև յուրաքանչյուր մաս դառնա առանձին տարր:",
+        "⚡ Տեսակավորում. Այս մասերից յուրաքանչյուրը համարվում է տեսակավորված, քանի որ մեկ տարրը միշտ դասավորված է ինքնուրույն:",
+        "⚡ Միաձուլում. Տեսակավորված մասերի զույգերը միավորվում են մեկ տեսակավորված զանգվածում՝ տարրերը միմյանց հետ համեմատելով:",
+        "⚡ Կրկնում. Այս միաձուլման գործընթացը կրկնվում է այնքան ժամանակ, մինչև բոլոր կտորները միաձուլվեն մեկ տեսակավորված զանգվածի մեջ:",
       ],
       softwareSkills: [
         {
@@ -363,9 +370,9 @@ const skills = {
       title: "Արագ տեսակավորում",
       fileName: "DesignImg",
       skills: [
-        "⚡ Designing highly attractive user interface for mobile and web applications",
-        "⚡ Customizing logo designs and building logos from scratch",
-        "⚡ Creating the flow of application functionalities to optimize user experience",
+        "⚡ Առանցքային ընտրություն. ընտրում է զանգվածի մեկ տարրը (օրինակ՝ առաջին, վերջին, պատահական կամ միջին տարրը):",
+        "⚡ Զանգվածի բաժանում. Զանգվածի բոլոր տարրերը տեղափոխվում են այնպես, որ հղումից փոքր տարրերը գտնվում են դրա ձախ կողմում, իսկ հղումից մեծ տարրերը գտնվում են աջ կողմում:",
+        "⚡ Ռեկուրսիվ տեսակավորում. երկու մասերից յուրաքանչյուրի համար (առանցքային տարրի ձախ և աջ) արագ տեսակավորումը կիրառվում է ռեկուրսիվ կերպով:",
       ],
       softwareSkills: [
         {

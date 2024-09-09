@@ -34,13 +34,13 @@ class SkillSection extends Component {
 
               <div className="skills-text-div">
                 <Fade right duration={1000}>
-                    <a href={""} className="skills-heading" style={{ color: theme.text }}>
+                    <a href={"https://website.com"} target="_blank" rel="noopener noreferrer" className="skills-heading" style={{ color: theme.text, textDecoration: "none" }}>
                       {skill.title}
                     </a>
                 </Fade>
-                <Fade right duration={1500}>
-                  <SoftwareSkill logos={skill.softwareSkills} />
-                </Fade>
+                {/*<Fade right duration={1500}>*/}
+                {/*  <SoftwareSkill logos={skill.softwareSkills} />*/}
+                {/*</Fade>*/}
                 <Fade right duration={2000}>
                   <div>
                     {skill.skills.map((skillSentence, i) => {
