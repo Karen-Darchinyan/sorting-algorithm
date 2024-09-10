@@ -9,7 +9,12 @@ import Contact from "../pages/contact/ContactComponent";
 import Projects from "../pages/projects/Projects";
 import { settings } from "../portfolio.js";
 import Error404 from "../pages/errors/error404/Error";
-import Bubble from "../pages/bubble/bubble";
+import BubbleSort from "../pages/bubble/BubbleSortComponent";
+import CocktailSort from "../pages/cocktail/CocktailSortComponent";
+import InsertionSort from "../pages/Insertion/InsertionSortComponent";
+import ShellSort from "../pages/shell/ShellSortComponent";
+import MergeSort from "../pages/merge/MergeSortComponent";
+import QuickSort from "../pages/quick/QuickSortComponent";
 
 export default class Main extends Component {
   render() {
@@ -28,8 +33,28 @@ export default class Main extends Component {
             }
           />
           <Route
-            path="/bubble"
-            render={(props) => <Bubble {...props} theme={this.props.theme} />}
+            path="/bubble-sort"
+            render={(props) => <BubbleSort {...props} theme={this.props.theme} />}
+          />
+          <Route
+            path="/cocktail-sort"
+            render={(props) => <CocktailSort {...props} theme={this.props.theme} />}
+          />
+          <Route
+            path="/insertion-sort"
+            render={(props) => <InsertionSort{...props} theme={this.props.theme} />}
+          />
+          <Route
+            path="/shell-sort"
+            render={(props) => <ShellSort {...props} theme={this.props.theme} />}
+          />
+          <Route
+            path="/merge-sort"
+            render={(props) => <MergeSort {...props} theme={this.props.theme} />}
+          />
+          <Route
+            path="/quick-sort"
+            render={(props) => <QuickSort {...props} theme={this.props.theme} />}
           />
           <Route
             path="/home"
@@ -65,7 +90,6 @@ export default class Main extends Component {
               render={(props) => <Splash {...props} theme={this.props.theme} />}
             />
           )}
-
           <Route
             path="/projects"
             render={(props) => <Projects {...props} theme={this.props.theme} />}

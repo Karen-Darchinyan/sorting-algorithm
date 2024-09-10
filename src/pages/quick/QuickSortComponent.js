@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import "./QuickSort.css";
 
-
-class Bubble extends Component {
+class QuickSort extends Component {
   render() {
     return (
       <div>
-        hello
+        QuickSort
       </div>
     );
   }
 }
 
-export default Bubble
+export default QuickSort;
