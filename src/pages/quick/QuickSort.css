@@ -1,0 +1,122 @@
+.algorithm-main {
+    width: 100%;
+}
+
+.basic-algorithm {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.algorithm-heading-div {
+    display: flex;
+}
+
+.algorithm-heading-div > * {
+    flex: 1;
+}
+
+.algorithm-main-div {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.algorithm-heading-img-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.algorithm-heading-text-div {
+    text-align: center;
+}
+
+.algorithm-heading-img-div > * {
+    max-width: 100%;
+    height: auto;
+}
+
+.algorithm-heading-text {
+    font-size: 40px;
+    font-weight: 400;
+    font-family: "Google Sans Medium";
+    line-height: 1.1;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.algorithm-heading-sub-text {
+    font-size: 30px;
+    font-family: "Google Sans Regular";
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.algorithm-header-detail-text {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: "Google Sans Medium";
+}
+
+.algorithm-about-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.algorithm-explanation {
+    width: 70%;
+}
+
+@media (max-width: 1380px) {
+    .algorithm-heading-text {
+        font-size: 50px;
+        margin-top: 80px;
+    }
+    .algorithm-heading-sub-text {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .algorithm-heading-text {
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    .algorithm-heading-sub-text {
+        font-size: 20px;
+    }
+
+    .algorithm-heading-div {
+        flex-direction: column;
+    }
+
+    .algorithm-header-detail-text {
+        font-size: 16px;
+        margin-right: 0px;
+        line-height: normal;
+        text-align: center;
+    }
+}
+
+.figure {
+    text-align: center;
+    border: 1px solid #d3dce6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.figcaption {
+    background: #f1f5fd;
+    border-top: 1px solid #d3dce6;
+    padding: 12px 16px;
+    text-align: center;
+    color: rgba(37, 38, 94, .7);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
