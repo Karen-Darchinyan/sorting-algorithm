@@ -5,6 +5,13 @@ import { Fade } from "react-bootstrap";
 import ShellSortingImg from "../../img/shell-sorting.jpg";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
+import shellSortImg0 from "../../img/Shell-sort-0.png";
+import shellSortImg1 from "../../img/Shell-sort-1.png";
+import shellSortImg2 from "../../img/Shell-sort-2.png";
+import shellSortImg3 from "../../img/Shell-sort-3.png";
+import shellSortImg4 from "../../img/Shell-sort-4.png";
+import shellSortImg5 from "../../img/Shell-sort-5.png";
+import shellSortImg6 from "../../img/Shell-sort-6.png";
 
 class ShellSort extends Component {
   render() {
@@ -47,7 +54,225 @@ class ShellSort extends Component {
                 </div>
               </div>
               <div className="algorithm-about-main">
-                <div className="algorithm-explanation"></div>
+                <div className="algorithm-explanation">
+                  <h3
+                    className="algorithm-heading-sub-text"
+                    style={{ color: theme.text, marginBottom: "28px" }}
+                  >
+                    Shell տեսակավորման աշխատանք
+                  </h3>
+                  <div>
+                    <div>
+                      <strong>Shell sort-ը </strong>
+                      զետեղման տեսակավորման ալգորիթմի ընդհանրացված տարբերակն է :
+                      Այն նախ տեսակավորում է միմյանցից հեռու գտնվող տարրերը և
+                      հաջորդաբար կրճատում է տեսակավորվող տարրերի միջև ընկած
+                      միջակայքը:
+                    </div>
+                    <p>
+                      Տարրերի միջև ընդմիջումը կրճատվում է օգտագործված
+                      հաջորդականության հիման վրա: Օպտիմալ հաջորդականություններից
+                      մի քանիսը, որոնք կարող են օգտագործվել կեղևի տեսակավորման
+                      ալգորիթմում, հետևյալն են.
+                    </p>
+                    <ul>
+                      <li>
+                        Shell-ի սկզբնական հաջորդականությունը .N/2 , N/4 , …, 1
+                      </li>
+                      <li>Knuth's ավելացումները .1, 4, 13, …, (3k – 1) / 2</li>
+                      <li>
+                        Sedgewick-ի ավելացումները .1, 8, 23, 77, 281, 1073,
+                        4193, 16577...4j+1+ 3·2j+ 1
+                      </li>
+                      <li>
+                        Hibbard's հավելումները .1, 3, 7, 15, 31, 63, 127, 255,
+                        511…
+                      </li>
+                      <li>
+                        Papernov & Stasevich ավելացում .1, 3, 5, 9, 17, 33,
+                        65,...
+                      </li>
+                      <li>
+                        Pratt: 1, 2, 3, 4, 6, 9, 8, 12, 18, 27, 16, 24, 36, 54,
+                        81....
+                      </li>
+                    </ul>
+                    <hr />
+                    <ol>
+                      <li>
+                        <p>
+                          <strong>
+                            Ենթադրենք, մենք պետք է տեսակավորենք հետևյալ
+                            զանգվածը.
+                          </strong>
+                        </p>
+                        <figure className="figure">
+                          <img height="85" src={shellSortImg0} width="375" />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>Սկզբնական զանգված</font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>
+                            Մենք օգտագործում ենք կեղևի սկզբնական
+                            հաջորդականությունը (N/2, N/4, ...1) որպես միջակայք
+                            մեր ալգորիթմում:
+                          </strong>
+                        </p>
+                        <p>
+                          Առաջին հանգույցում, եթե զանգվածի չափն N = 8 այն է, ապա
+                          այն տարրերը, որոնք ընկած են միջակայքում, N/2 = 4
+                          համեմատվում և փոխանակվում են, եթե դրանք կարգին չեն:
+                        </p>
+                        <ol type="a">
+                          <li>0-րդ տարրը համեմատվում է 4-րդ տարրի հետ:</li>
+                          <li>
+                            Եթե 0-րդ տարրը մեծ է 4-րդ տարրից, ապա 4-րդ տարրը
+                            սկզբում պահվում է <code>temp</code> փոփոխականում,
+                            իսկ 0-րդ տարրը (այսինքն՝ ավելի մեծ տարրը) պահվում է
+                            դիրքում 4-րդ, իսկ <code>temp</code>-ում պահվող տարրը
+                            պահվում է դիրքում 0-րդ:
+                          </li>
+                        </ol>
+                        <figure className="figure">
+                          <img
+                            alt=""
+                            height="262"
+                            src={shellSortImg1}
+                            title=""
+                            width="375"
+                          />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>Վերադասավորեք տարրերը n/2 ընդմիջումով</font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                        <p>
+                          Այս գործընթացը շարունակվում է մնացած բոլոր տարրերի
+                          համար:
+                        </p>
+
+                        <figure className="figure">
+                          <img
+                            alt=""
+                            height="280"
+                            src={shellSortImg2}
+                            title=""
+                            width="375"
+                          />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>
+                                Վերադասավորեք բոլոր տարրերը n/2 ընդմիջումով
+                              </font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>
+                            Երկրորդ օղակում վերցվում է միջակայքը N/4 = 8/4 = 2 և
+                            կրկին դասակարգվում են այս միջակայքերում ընկած
+                            տարրերը:
+                          </strong>
+                        </p>
+                        <figure className="figure">
+                          <img
+                            alt=""
+                            height="150"
+                            src={shellSortImg3}
+                            title=""
+                            width="375"
+                          />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>Վերադասավորեք տարրերը n/4 ընդմիջումով</font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                        <p>Դուք կարող եք շփոթվել այս պահին:</p>
+                        <figure className="figure">
+                          <img
+                            alt=""
+                            height="150"
+                            src={shellSortImg4}
+                            title=""
+                            width="375"
+                          />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>
+                                Ընթացիկ միջակայքում ընկած զանգվածի բոլոր տարրերը
+                                համեմատվում են:
+                              </font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                        <p>
+                          Տարրերը ժամը 4-րդ և 2-րդ դիրքերը համեմատվում են:
+                          Տարրերը ժամը 2-րդ և 0-րդ դիրքերը նույնպես համեմատվում
+                          են: Ընթացիկ միջակայքում ընկած զանգվածի բոլոր տարրերը
+                          համեմատվում են:
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>
+                            Նույն գործընթացը շարունակվում է մնացած տարրերի
+                            համար:
+                          </strong>
+                        </p>
+                        <figure className="figure">
+                          <img
+                            alt=""
+                            height="344"
+                            src={shellSortImg5}
+                            title=""
+                            width="375"
+                          />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>
+                                Վերադասավորեք բոլոր տարրերը n/4 ընդմիջումով
+                              </font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>
+                            Վերջապես, երբ ինտերվալն է, N/8 = 8/8 = 1 ապա
+                            դասավորվում են 1-ի միջակայքում ընկած զանգվածի
+                            տարրերը: Զանգվածն այժմ ամբողջությամբ տեսակավորված է:
+                          </strong>
+                        </p>
+                        <figure className="figure">
+                          <img
+                            alt=""
+                            height="603"
+                            src={shellSortImg6}
+                            title=""
+                            width="375"
+                          />
+                          <figcaption className="figcaption">
+                            <font>
+                              <font>Վերադասավորեք տարրերը n/8 ընդմիջումով</font>
+                            </font>
+                          </figcaption>
+                        </figure>
+                      </li>
+                    </ol>
+                    <hr />
+                    <hr />
+                  </div>
+                </div>
               </div>
             </div>
           </Fade>
