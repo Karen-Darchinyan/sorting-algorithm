@@ -18,7 +18,7 @@
 .algorithm-main-div {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 40px;
 }
 
 .algorithm-heading-img-div {

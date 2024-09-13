@@ -12,6 +12,7 @@ import shellSortImg3 from "../../img/Shell-sort-3.png";
 import shellSortImg4 from "../../img/Shell-sort-4.png";
 import shellSortImg5 from "../../img/Shell-sort-5.png";
 import shellSortImg6 from "../../img/Shell-sort-6.png";
+import ShellSortVisualization from "./ShellSortVisualization";
 
 class ShellSort extends Component {
   render() {
@@ -268,12 +269,73 @@ class ShellSort extends Component {
                           </figcaption>
                         </figure>
                       </li>
+                      <hr />
+                      <br />
+                      <strong>Ալգորիթմի իրականացումը JavaScript-ով`</strong>
+                      <div style={{ padding: "0 40px" }}>
+                        <pre
+                          style={{
+                            background: "rgb(0, 28, 85)",
+                            borderRadius: "4px",
+                            padding: "20px 0",
+                          }}
+                        >
+                          <code style={{ color: "#fff" }}>
+                            &nbsp;&nbsp;function shellSort(arr) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;let n = arr.length; {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Start with a big gap,
+                            then reduce the gap {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (let gap = Math.floor(n
+                            / 2); gap &gt; 0; gap = Math.floor(gap / 2)) {
+                              "{"
+                            }{" "}
+                            {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Perform a
+                            gapped insertion sort for this gap size. {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let i =
+                            gap; i &lt; n; i++) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let
+                            temp = arr[i]; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let
+                            j; {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+                            Shift earlier gap-sorted elements up until the
+                            correct location {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+                            for arr[i] is found {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for
+                            (j = i; j &gt;= gap && arr[j - gap] &gt; temp; j -=
+                            gap) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j]
+                            = arr[j - gap]; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {"}"} {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+                            Put temp (the original arr[i]) in its correct
+                            location {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j]
+                            = temp; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;return arr; {"\n"}
+                            &nbsp;&nbsp;{"}"} {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;// Example usage: {"\n"}
+                            &nbsp;&nbsp;let array = [12, 34, 54, 2, 3]; {"\n"}
+                            &nbsp;&nbsp;console.log("Sorted array:",
+                            shellSort(array)); {"\n"}
+                          </code>
+                        </pre>
+                      </div>
                     </ol>
-                    <hr />
-                    <hr />
                   </div>
                 </div>
               </div>
+              <ShellSortVisualization></ShellSortVisualization>
             </div>
           </Fade>
         </div>

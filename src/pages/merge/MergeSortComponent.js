@@ -14,6 +14,7 @@ import mergeSortingImg5 from "../../img/Merge-sort-5.png";
 import mergeSortingImg6 from "../../img/Merge-sort-6.png";
 import mergeSortingImg7 from "../../img/Merge-sort-7.png";
 import mergeSortingImg8 from "../../img/Merge-sort-8.png";
+import MergeSortVisualization from "./MargeSortVisualization";
 
 class MergeSort extends Component {
   render() {
@@ -565,12 +566,57 @@ class MergeSort extends Component {
                           տեսակավորված է.
                         </p>
                       </li>
+                      <hr />
+                      <br />
+                      <strong>Ալգորիթմի իրականացումը JavaScript-ով`</strong>
+                      <div style={{ padding: "0 40px" }}>
+                        <pre
+                          style={{
+                            background: "rgb(0, 28, 85)",
+                            borderRadius: "4px",
+                            padding: "20px 0",
+                          }}
+                        >
+                          <code style={{ color: "#fff" }}>
+                            &nbsp;&nbsp;function quickSort(arr) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (arr.length &lt;= 1) {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return arr; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Select a pivot element {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;const pivot = arr[Math.floor(arr.length / 2)]; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;const left = []; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;const right = []; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;const equal = []; {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Partition the array into left, right, and equal arrays {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i &lt; arr.length; i++) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (arr[i] &lt; pivot) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left.push(arr[i]); {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (arr[i] &gt; pivot) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right.push(arr[i]); {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;equal.push(arr[i]); {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Recursively apply quickSort to left and right arrays, then concatenate results {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;return [...quickSort(left), ...equal, ...quickSort(right)]; {"\n"}
+                            &nbsp;&nbsp;{"}"} {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;// Example usage: {"\n"}
+                            &nbsp;&nbsp;let array = [3, 6, 8, 10, 1, 2, 1]; {"\n"}
+                            &nbsp;&nbsp;console.log("Sorted array:", quickSort(array)); {"\n"}
+                          </code>
+                        </pre>
+                      </div>
                     </ol>
-                    <hr />
-                    <hr />
                   </div>
                 </div>
               </div>
+              <MergeSortVisualization></MergeSortVisualization>
             </div>
           </Fade>
         </div>

@@ -10,6 +10,7 @@ import insertionSortImg1 from "../../img/Insertion-sort-1.png";
 import insertionSortImg2 from "../../img/Insertion-sort-2.png";
 import insertionSortImg3 from "../../img/Insertion-sort-3.png";
 import insertionSortImg4 from "../../img/Insertion-sort-4.png";
+import InsertionSortVisualization from "./InsertionSortVisualization";
 
 class InsertionSort extends Component {
   render() {
@@ -210,12 +211,55 @@ class InsertionSort extends Component {
                           </figcaption>
                         </figure>
                       </li>
+                      <hr />
+                      <br />
+                      <strong>Ալգորիթմի իրականացումը JavaScript-ով`</strong>
+                      <div style={{ padding: "0 40px" }}>
+                        <pre
+                          style={{
+                            background: "rgb(0, 28, 85)",
+                            borderRadius: "4px",
+                            padding: "20px 0",
+                          }}
+                        >
+                          <code style={{ color: "#fff" }}>
+                            &nbsp;&nbsp;function insertionSort(arr) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 1; i &lt;
+                            arr.length; i++) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let key =
+                            arr[i]; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let j = i - 1;{" "}
+                            {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Move elements
+                            of arr[0..i-1], that are greater than key, {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// to one
+                            position ahead of their current position {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (j &gt;= 0
+                            && arr[j] &gt; key) {"{"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j
+                            + 1] = arr[j]; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j =
+                            j - 1; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j + 1] =
+                            key; {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;return arr; {"\n"}
+                            &nbsp;&nbsp;{"}"} {"\n"}
+                            {"\n"}
+                            &nbsp;&nbsp;// Example usage: {"\n"}
+                            &nbsp;&nbsp;let array = [12, 11, 13, 5, 6]; {"\n"}
+                            &nbsp;&nbsp;console.log("Sorted array: ",
+                            insertionSort(array)); {"\n"}
+                          </code>
+                        </pre>
+                      </div>
                     </ol>
-                    <hr />
-                    <hr />
                   </div>
                 </div>
               </div>
+              <InsertionSortVisualization></InsertionSortVisualization>
             </div>
           </Fade>
         </div>
