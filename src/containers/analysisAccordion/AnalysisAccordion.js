@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import ExperienceCard from "../../components/experienceCard/ExperienceCard.js";
-import "./ExperienceAccordion.css";
+import AnalysisCard from "../../components/analysisCard/AnalysisCard.js";
+import "./AnalysisAccordion.css";
 import { Accordion, Panel } from "baseui/accordion";
 
-class ExperienceAccordion extends Component {
+class AnalysisAccordion extends Component {
   render() {
     const theme = this.props.theme;
     return (
-      <div className="experience-accord">
+      <div className="analysis-accord">
         <Accordion>
           {this.props.sections.map((section) => {
             return (
@@ -37,9 +37,9 @@ class ExperienceAccordion extends Component {
                   },
                 }}
               >
-{section["experiences"].map((experience,index) => {
+                  {section["analysiss"].map((analysis,index) => {
                   return (
-                    <ExperienceCard index={index} totalCards={section["experiences"].length} experience={experience} theme={theme} />
+                    <AnalysisCard index={index} totalCards={section["analysiss"].length} analysis={analysis} theme={theme} />
                   );
                 })}
               </Panel>
@@ -51,4 +51,4 @@ class ExperienceAccordion extends Component {
   }
 }
 
-export default ExperienceAccordion;
+export default AnalysisAccordion;

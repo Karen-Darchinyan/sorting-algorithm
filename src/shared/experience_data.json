@@ -1,13 +1,13 @@
 {
-	"title": "Experience",
+	"title": "Analysis",
 	"subtitle": "Work, Internship and Volunteership",
 	"description":
 		"I have worked with many evolving startups as ML and DL Developer, Designer and Software Architect. I have also worked with some well established companies mostly as AI Developer. I love organising events and that is why I am also involved with many opensource communities as a representative.",
-	"header_image_path": "experience.svg",
+	"header_image_path": "analysis.svg",
 	"sections": [
 		{
 			"title": "Work",
-			"experiences": [
+			"analysiss": [
 				{
 					"title": "Android and ML Developer",
 					"company": "Muffito Incorporation",
@@ -27,14 +27,14 @@
 					"duration": "Nov 2017 - Dec 2017",
 					"location": "Ahmedabad, Gujarat",
 					"description":
-						"FreeCopy is the Start up from Indian Institute of Management, Ahmedabad. I have changed the integration of the whole app from Google to Firebase. I learnt the efﬁcient ways of Data communications like Retroﬁt, Eventbus etc. I experienced the real time start up. I learnt the Design thinking of UI on perspective of People.",
+						"FreeCopy is the Start up from Indian Institute of Management, Ahmedabad. I have changed the integration of the whole app from Google to Firebase. I learnt the efﬁcient ways of Data communications like Retroﬁt, Eventbus etc. I analysisd the real time start up. I learnt the Design thinking of UI on perspective of People.",
 					"color": "#fc1f20"
 				}
 			]
 		},
 		{
 			"title": "Internships",
-			"experiences": [
+			"analysiss": [
 				{
 					"title": "Data Science Research Intern",
 					"company": "Delhivery Pvt. Ltd.",
@@ -49,7 +49,7 @@
 		},
 		{
 			"title": "Volunteerships",
-			"experiences": []
+			"analysiss": []
 		}
 	]
 }

@@ -1,28 +1,28 @@
 import React, { Component } from "react";
-import "./ExperienceCard.css";
+import "./AnalysisCard.css";
 import { Fade } from "react-reveal";
 
-class ExperienceCard extends Component {
+class AnalysisCard extends Component {
   render() {
-    const experience = this.props.experience;
+    const analysis = this.props.analysis;
     const index = this.props.index;
     const totalCards = this.props.totalCards;
     const theme = this.props.theme;
     return (
       <div
-        className="experience-list-item"
+        className="analysis-list-item"
         style={{ marginTop: index === 0 ? 30 : 50 }}
       >
         <Fade left duration={2000} distance="40px">
-          <div className="experience-card-logo-div">
+          <div className="analysis-card-logo-div">
             <img
-              className="experience-card-logo"
-              src={require(`../../assets/images/${experience["logo_path"]}`)}
+              className="analysis-card-logo"
+              src={require(`../../img/${analysis["logo_path"]}`)}
               alt=""
             />
           </div>
         </Fade>
-        <div className="experience-card-stepper">
+        <div className="analysis-card-stepper">
           <div
             style={{
               width: 20,
@@ -45,13 +45,13 @@ class ExperienceCard extends Component {
           )}
         </div>
         <Fade right duration={2000} distance="40px">
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
             <div
               className="arrow-left"
               style={{ borderRight: `10px solid ${theme.body}` }}
             ></div>
             <div
-              className="experience-card"
+              className="analysis-card"
               style={{ background: `${theme.body}` }}
             >
               <div
@@ -63,39 +63,11 @@ class ExperienceCard extends Component {
               >
                 <div>
                   <h3
-                    className="experience-card-title"
+                    className="analysis-card-title"
                     style={{ color: theme.text }}
                   >
-                    {experience["title"]}
+                    {analysis["title"]}
                   </h3>
-                  <p
-                    className="experience-card-company"
-                    style={{ color: theme.text }}
-                  >
-                    <a
-                      href={experience["company_url"]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {experience["company"]}
-                    </a>
-                  </p>
-                </div>
-                <div>
-                  <div className="experience-card-heading-right">
-                    <p
-                      className="experience-card-duration"
-                      style={{ color: theme.secondaryText }}
-                    >
-                      {experience["duration"]}
-                    </p>
-                    <p
-                      className="experience-card-location"
-                      style={{ color: theme.secondaryText }}
-                    >
-                      {experience["location"]}
-                    </p>
-                  </div>
                 </div>
               </div>
               <div
@@ -105,8 +77,25 @@ class ExperienceCard extends Component {
                   marginTop: 20,
                 }}
               >
-                <div className="repo-description" />
-                {experience["description"]}
+                <div>
+                  {analysis["image"] ? (
+                    <img
+                      src={require(`../..//img/${analysis["image"]}`)}
+                      alt="Analysis"
+                    />
+                  ) : (
+                    <div>
+                      <ul>
+                        {analysis["description"].map((item, index) => (
+                          <li
+                            key={index}
+                            dangerouslySetInnerHTML={{ __html: item }}
+                          />
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -116,4 +105,4 @@ class ExperienceCard extends Component {
   }
 }
 
-export default ExperienceCard;
+export default AnalysisCard;

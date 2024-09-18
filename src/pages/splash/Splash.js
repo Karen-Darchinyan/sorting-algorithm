@@ -6,9 +6,9 @@ import LoaderLogo from "../../components/Loader/LoaderLogo.js";
 function AnimatedSplash(props) {
   return (
     <div className="logo_wrapper">
-      <div className="screen" style={{ backgroundColor: props.theme.splashBg }}>
-        <LoaderLogo id="logo" theme={props.theme} />
-      </div>
+      {/*<div className="screen" style={{ backgroundColor: props.theme.splashBg }}>*/}
+      {/*  <LoaderLogo id="logo" theme={props.theme} />*/}
+      {/*</div>*/}
     </div>
   );
 }
@@ -22,7 +22,7 @@ class Splash extends Component {
   }
 
   componentDidMount() {
-    this.id = setTimeout(() => this.setState({ redirect: true }), 5500);
+    this.id = setTimeout(() => this.setState({ redirect: true }), 500);
   }
 
   componentWillMount() {

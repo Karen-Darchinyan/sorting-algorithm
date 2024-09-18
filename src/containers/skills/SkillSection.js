@@ -42,7 +42,7 @@ class SkillSection extends Component {
 
               <div className="skills-text-div">
                 <Fade right duration={1000}>
-                    <a href={skill.href} target="_blank" rel="noopener noreferrer" className="skills-heading" style={{ color: theme.text, textDecoration: "none" }}>
+                    <a href={skill.href} rel="noopener noreferrer" className="skills-heading" style={{ color: theme.text, textDecoration: "none" }}>
                       {skill.title}
                     </a>
                 </Fade>

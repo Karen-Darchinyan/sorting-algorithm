@@ -9,7 +9,7 @@ export default function Footer(props) {
     <div className="footer-div">
       <Fade>
         <p className="footer-text" style={{ color: props.theme.secondaryText }}>
-          Պատրաստված է <span role="img">❤️</span> {greeting.name}ի կողմից.
+          Պատրաստված է <span role="img"></span> {greeting.name}ի կողմից.
         </p>
         {/* <ToggleSwitch theme={props.theme} onToggle={props.onToggle}/> */}
       </Fade>
