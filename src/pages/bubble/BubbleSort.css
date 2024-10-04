@@ -130,6 +130,7 @@
 }
 
 .array-container {
+    min-height: 600px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -144,6 +145,7 @@
 
 .controls {
     display: flex;
+    align-items: center;
     gap: 10px;
     margin: 20px 0;
 }
@@ -173,6 +175,13 @@
      background-color: #ffffff;
      color: black;
      transition: ease-in 0.3s;
+}
+
+.array-length-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
 }
 
 .controls-range {

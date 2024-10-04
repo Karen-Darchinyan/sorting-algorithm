@@ -417,36 +417,38 @@ class QuickSort extends Component {
                       </strong>
                       <div style={{ padding: "0 40px" }}>
                           <pre style={{ background: "rgb(0, 28, 85)", borderRadius: "4px", padding: "20px 0" }}>
-                            <code style={{ color: "#fff" }}>
-                              &nbsp;&nbsp;function bubbleSort(arr) {"{"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;let len = arr.length; {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;let swapped; {"\n"}
-                              &nbsp;&nbsp;{"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;// Outer loop for each pass {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i &lt; len; i++) {"{"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swapped = false; {"\n"}
-                              &nbsp;&nbsp;{"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Inner loop to compare adjacent elements {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let j = 0; j &lt; len - i - 1; j++) {"{"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (arr[j] &gt; arr[j + 1]) {"{"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Swap elements if they are in the wrong order {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swapped = true; {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
-                              &nbsp;&nbsp;{"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// If no swaps occurred, the array is already sorted {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!swapped) {"{"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break; {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
-                              &nbsp;&nbsp;&nbsp;&nbsp;return arr; {"\n"}
-                              &nbsp;&nbsp;{"}"} {"\n"}
-                              &nbsp;&nbsp;{"\n"}
-                              &nbsp;&nbsp;// Example usage {"\n"}
-                              &nbsp;&nbsp;let array = [64, 34, 25, 12, 22, 11, 90]; {"\n"}
-                              &nbsp;&nbsp;console.log("Sorted array:", bubbleSort(array)); {"\n"}
-                            </code>
+                           <code style={{ color: "#fff" }}>
+                             &nbsp;&nbsp;function quickSort(arr, low, high) {"{"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;if (low &lt; high) {"{"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// pi is the partitioning index {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let pi = partition(arr, low, high); {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Recursively sort elements before and after partition {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickSort(arr, low, pi - 1); {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickSort(arr, pi + 1, high); {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                             &nbsp;&nbsp;{"}"} {"\n"}
+                             &nbsp;&nbsp;{"\n"}
+                             &nbsp;&nbsp;// Helper function to partition the array {"\n"}
+                             &nbsp;&nbsp;function partition(arr, low, high) {"{"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;let pivot = arr[high]; {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;let i = low - 1; {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;for (let j = low; j &lt; high; j++) {"{"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (arr[j] &lt;= pivot) {"{"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++; {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Swap arr[i] and arr[j] {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[arr[i], arr[j]] = [arr[j], arr[i]]; {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;{"}"} {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;// Swap arr[i + 1] and pivot {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;[arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]; {"\n"}
+                             &nbsp;&nbsp;&nbsp;&nbsp;return i + 1; {"\n"}
+                             &nbsp;&nbsp;{"}"} {"\n"}
+                             &nbsp;&nbsp;{"\n"}
+                             &nbsp;&nbsp;// Example usage {"\n"}
+                             &nbsp;&nbsp;let array = [64, 34, 25, 12, 22, 11, 90]; {"\n"}
+                             &nbsp;&nbsp;quickSort(array, 0, array.length - 1); {"\n"}
+                             &nbsp;&nbsp;console.log("Sorted array:", array); {"\n"}
+                           </code>
                           </pre>
                       </div>
                     </ol>

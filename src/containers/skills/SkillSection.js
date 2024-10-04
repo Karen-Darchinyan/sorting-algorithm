@@ -3,21 +3,20 @@ import "./Skills.css";
 import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
 import { skills } from "../../portfolio";
 import { Fade } from "react-reveal";
-import DataScienceImg from "./DataScienceImg";
-import FullStackImg from "./FullStackImg";
-import CloudInfraImg from "./CloudInfraImg";
-import DesignImg from "./DesignImg";
+import BubbleSortingImg from "./BubbleSortingImg";
+import CocktailSortingImg from "./CocktailSortingImg";
+import InsertionSortingImg from "./InsertionSortingImg";
 import ShellSortingImg from "./ShellSortingImg";
 import MergeSortingImg from "./MergeSortingImg";
 import QuickSortingImg from "./QuickSortingImg";
 
 function GetSkillSvg(props) {
   if (props.fileName === "bubbleSort")
-    return <DataScienceImg theme={props.theme} />;
+    return <BubbleSortingImg theme={props.theme} />;
   else if (props.fileName === "cocktailSort")
-    return <FullStackImg theme={props.theme} />;
+    return <CocktailSortingImg theme={props.theme} />;
   else if (props.fileName === "insertionSort")
-    return <CloudInfraImg theme={props.theme} />;
+    return <InsertionSortingImg theme={props.theme} />;
   else if (props.fileName === "shellSort")
     return <ShellSortingImg theme={props.theme} />;
   else if (props.fileName === "mergeSort")
