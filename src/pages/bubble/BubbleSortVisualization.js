@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BubbleSort.css";
 
 const BubbleSortVisualization = () => {
-  const [array, setArray] = useState([17,9, 15, 7, 18, 5, 11, 4, 12, 3, 16, 8, 13, 1, 2, 19, 6, 10, 14, 20, ]);
+  const [array, setArray] = useState([]);
   const [sorting, setSorting] = useState(false);
-  const [arrayLength, setArrayLength] = useState(20);
+  const [arrayLength, setArrayLength] = useState(25);
+  const [sortingTime, setSortingTime] = useState(500);
+  const [isSorted, setIsSorted] = useState(false);
 
   const generateNewArray = () => {
     if (!sorting) {
@@ -15,8 +17,24 @@ const BubbleSortVisualization = () => {
     }
   };
 
+  const increaseSortingTime = () => {
+    if(sortingTime < 2000 && !sorting){
+      setSortingTime(prevSortingTime => prevSortingTime + 100);
+    }
+  }
+
+  const decreaseSortingTime = () => {
+    if(sortingTime >= 100 && !sorting){
+      setSortingTime(prevSortingTime => prevSortingTime - 100);
+    }
+  }
+
+  useEffect(() => {
+    generateNewArray();
+  }, []);
+
   const increaseArrayLength = () => {
-    if (arrayLength < 30 && !sorting) {
+    if (arrayLength < 40 && !sorting) {
       setArrayLength(prevLength => prevLength + 1);
       generateNewArray();
     }
@@ -27,6 +45,19 @@ const BubbleSortVisualization = () => {
       setArrayLength(prevLength => prevLength - 1);
       generateNewArray();
     }
+  };
+
+  useEffect(() => {
+    setIsSorted(isArraySorted(array));
+  }, [array]);
+
+  const isArraySorted = (arr) => {
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        return false;
+      }
+    }
+    return true;
   };
 
   const bubbleSort = async () => {
@@ -42,7 +73,7 @@ const BubbleSortVisualization = () => {
           arr[j + 1] = temp;
 
           setArray([...arr]);
-          await new Promise((resolve) => setTimeout(resolve, 300));
+          await new Promise((resolve) => setTimeout(resolve, sortingTime));
         }
       }
     }
@@ -60,32 +91,48 @@ const BubbleSortVisualization = () => {
             key={index}
             className="array-bar"
             style={{
-              height: `${value * 20}px`,
+              height: `${value * 15}px`,
               backgroundColor: sorting ? "lightcoral" : "#149ad9",
-              width: "30px",
-              margin: "0 5px",
-              display: "inline-block",
             }}
           >
             {value}
           </div>
         ))}
       </div>
-      <div className="array-length-controls">
+      <div className="feature-controls">
         <button
           className="visualization-button"
           onClick={decreaseArrayLength}
           disabled={sorting || arrayLength <= 5}
-          style={{margin: "0", padding: "8px 13px"}}
+          style={{ margin: "0", padding: "8px 13px" }}
         >
           {"-"}
         </button>
-        <span>Տողերի քանակը: {arrayLength}</span>
+        <span>Էլեմենտների քանակը: {arrayLength}</span>
         <button
           className="visualization-button"
           onClick={increaseArrayLength}
-          disabled={sorting || arrayLength >= 30}
-          style={{margin: "0", padding: "8px 13px"}}
+          disabled={sorting || arrayLength >= 40}
+          style={{ margin: "0", padding: "8px 13px" }}
+        >
+          {"+"}
+        </button>
+      </div>
+      <div className="feature-controls">
+        <button
+          className="visualization-button"
+          onClick={decreaseSortingTime}
+          disabled={sorting || sortingTime <= 100}
+          style={{ margin: "0", padding: "8px 13px" }}
+        >
+          {"-"}
+        </button>
+        <span>Տեսակավորման արագություն: {sortingTime/1000} վրկ</span>
+        <button
+          className="visualization-button"
+          onClick={increaseSortingTime}
+          disabled={sorting || sortingTime >= 2000}
+          style={{ margin: "0", padding: "8px 13px" }}
         >
           {"+"}
         </button>
@@ -94,16 +141,16 @@ const BubbleSortVisualization = () => {
         <button
           className="visualization-button"
           onClick={bubbleSort}
-          disabled={sorting}
+          disabled={sorting || isSorted}
         >
-          {sorting ? "Տեսակավորում..." : "Սկսել Bubble տեսակավորումը"}
+          {sorting ? "Տեսակավորում..." : isSorted ? "Զանգվածը արդեն տեսակավորված է" : "Սկսել Bubble տեսակավորումը"}
         </button>
         <button
           className="visualization-button"
           onClick={generateNewArray}
           disabled={sorting}
         >
-          Ստեղծեք նոր զանգված
+          Ստեղծել նոր զանգված
         </button>
       </div>
     </div>
