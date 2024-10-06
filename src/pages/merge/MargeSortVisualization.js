@@ -1,24 +1,66 @@
-import React, { useEffect, useRef, useState } from 'react';
-import "./MergeSort.css"
+import React, { useEffect, useState } from "react";
+import "./MergeSort.css";
 
 const MergeSortVisualization = () => {
-
-  const canvasRef = useRef(null);
-  const [title, setTitle] = useState('Array is being sorted...');
+  const [array, setArray] = useState([]);
   const [sorting, setSorting] = useState(false);
-  const [arr, setArr] = useState([]);
+  const [arrayLength, setArrayLength] = useState(20);
+  const [sortingTime, setSortingTime] = useState(500);
+  const [isSorted, setIsSorted] = useState(false);
   const [itmd] = useState(Array(40).fill(0));
-  const [visited] = useState(Array(40).fill(0));
-  const len_of_arr = 20;
+  const [visited, setVisited] = useState(Array(40).fill(0));
 
-  const initializeArray = () => {
-    const newArray = Array.from({ length: len_of_arr }, () => Math.round(Math.random() * 250));
-    setArr(newArray);
+  const generateNewArray = () => {
+    if (!sorting) {
+      const newArray = Array.from({ length: arrayLength }, () =>
+        Math.round(Math.random() * 39 + 1)
+      );
+      setArray(newArray);
+      setVisited(Array(arrayLength).fill(0)); // Reset visited array
+      setIsSorted(false); // Reset sorting state
+    }
   };
 
   useEffect(() => {
-    initializeArray();
-  }, []);
+    generateNewArray();
+  }, [arrayLength]);
+
+  const increaseSortingTime = () => {
+    if (sortingTime < 2000 && !sorting) {
+      setSortingTime((prevSortingTime) => prevSortingTime + 100);
+    }
+  };
+
+  const decreaseSortingTime = () => {
+    if (sortingTime >= 100 && !sorting) {
+      setSortingTime((prevSortingTime) => prevSortingTime - 100);
+    }
+  };
+
+  const increaseArrayLength = () => {
+    if (arrayLength < 40 && !sorting) {
+      setArrayLength((prevLength) => prevLength + 1);
+    }
+  };
+
+  const decreaseArrayLength = () => {
+    if (arrayLength > 5 && !sorting) {
+      setArrayLength((prevLength) => prevLength - 1);
+    }
+  };
+
+  useEffect(() => {
+    setIsSorted(isArraySorted(array));
+  }, [array]);
+
+  const isArraySorted = (arr) => {
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   const mergeArray = (start, end) => {
     const mid = Math.floor((start + end) / 2);
@@ -27,45 +69,23 @@ const MergeSortVisualization = () => {
     let index = start;
 
     while (start1 <= end1 && start2 <= end2) {
-      if (arr[start1] <= arr[start2]) {
-        itmd[index++] = arr[start1++];
+      if (array[start1] <= array[start2]) {
+        itmd[index++] = array[start1++];
       } else {
-        itmd[index++] = arr[start2++];
+        itmd[index++] = array[start2++];
       }
     }
 
     while (start1 <= end1) {
-      itmd[index++] = arr[start1++];
+      itmd[index++] = array[start1++];
     }
 
     while (start2 <= end2) {
-      itmd[index++] = arr[start2++];
+      itmd[index++] = array[start2++];
     }
 
     for (let i = start; i <= end; i++) {
-      arr[i] = itmd[i];
-    }
-  };
-
-  const drawBars = (start, end) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    const barWidth = 30;
-    const spacing = 5;
-
-    for (let i = 0; i < len_of_arr; i++) {
-      const x = (barWidth + spacing) * i;
-      ctx.fillStyle = visited[i] ? 'lightcoral' : 'black';
-      ctx.fillRect(x, 300 - arr[i], barWidth, arr[i]);
-    }
-
-    for (let i = start; i <= end; i++) {
-      const x = (barWidth + spacing) * i;
-      ctx.fillStyle = '#149ad9';
-      ctx.fillRect(x, 300 - arr[i], barWidth , arr[i]);
-      visited[i] = 1;
+      array[i] = itmd[i];
     }
   };
 
@@ -79,17 +99,24 @@ const MergeSortVisualization = () => {
       await mergeSort(start, mid);
       await mergeSort(mid + 1, end);
       mergeArray(start, end);
-      drawBars(start, end);
-      await timeout(800); // Waiting time between bars
+
+      // Highlight the sorted portion
+      setVisited((prevVisited) => {
+        const updatedVisited = [...prevVisited];
+        for (let i = start; i <= end; i++) {
+          updatedVisited[i] = 1;
+        }
+        return updatedVisited;
+      });
+
+      await timeout(sortingTime); // Adjust sorting time dynamically
     }
   };
 
-
   const performer = async () => {
     setSorting(true);
-    await mergeSort(0, len_of_arr - 1);
-    drawBars(0, len_of_arr - 1);
-    setTitle('Array is completely sorted');
+    await mergeSort(0, arrayLength - 1);
+    setIsSorted(true);
     setSorting(false);
   };
 
@@ -97,40 +124,81 @@ const MergeSortVisualization = () => {
     performer();
   };
 
-  const generateNewArray = () => {
-    initializeArray();
-    setTitle('Array is being sorted...');
-    const canvas = canvasRef.current;
-    drawBars(0, len_of_arr - 1);
-  };
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    canvas.width = 700;
-    canvas.height = 340;
-    drawBars(0, len_of_arr - 1);
-  }, [arr]);
-
   return (
     <div className="visualization-sort-container">
       <h3 className="algorithm-heading-sub-text" style={{ marginBottom: "28px" }}>
         Merge տեսակավորման վիզուալիզացիա
       </h3>
-      <canvas ref={canvasRef} id="Canvas"></canvas>
+
+      <div className="array-container">
+        {array.map((value, index) => (
+          <div
+            key={index}
+            className="array-bar"
+            style={{
+              height: `${value * 15}px`,
+              backgroundColor: visited[index] ? "lightcoral" : "#149ad9",
+            }}
+          >
+            {value}
+          </div>
+        ))}
+      </div>
+
+      <div className="feature-controls">
+        <button
+          className="visualization-button"
+          onClick={decreaseArrayLength}
+          disabled={sorting || arrayLength <= 5}
+          style={{ margin: "0", padding: "8px 13px" }}
+        >
+          {"-"}
+        </button>
+        <span>Էլեմենտների քանակը: {arrayLength}</span>
+        <button
+          className="visualization-button"
+          onClick={increaseArrayLength}
+          disabled={sorting || arrayLength >= 40}
+          style={{ margin: "0", padding: "8px 13px" }}
+        >
+          {"+"}
+        </button>
+      </div>
+
+      <div className="feature-controls">
+        <button
+          className="visualization-button"
+          onClick={decreaseSortingTime}
+          disabled={sorting || sortingTime <= 100}
+          style={{ margin: "0", padding: "8px 13px" }}
+        >
+          {"-"}
+        </button>
+        <span>Տեսակավորման արագություն: {sortingTime / 1000} վրկ</span>
+        <button
+          className="visualization-button"
+          onClick={increaseSortingTime}
+          disabled={sorting || sortingTime >= 2000}
+          style={{ margin: "0", padding: "8px 13px" }}
+        >
+          {"+"}
+        </button>
+      </div>
+
       <div className="controls">
         <button
           className="visualization-button"
           onClick={startMergeSort}
-          disabled={sorting}
+          disabled={sorting || isSorted}
         >
-          {sorting ? "Տեսակավորում..." : "Սկսել Merge տեսակավորումը"}
+          {sorting ? "Տեսակավորում..." : isSorted ? "Զանգվածը արդեն տեսակավորված է" : "Սկսել Merge տեսակավորումը"}
         </button>
         <button
           className="visualization-button"
           onClick={generateNewArray}
           disabled={sorting}
         >
-          Ստեղծեք նոր զանգված
+          Ստեղծել նոր զանգված
         </button>
       </div>
     </div>
