@@ -8,12 +8,19 @@ const InsertionSortVisualization = () => {
   const [sortingTime, setSortingTime] = useState(500);
   const [isSorted, setIsSorted] = useState(false);
 
-  const generateNewArray = () => {
+  const generateNewArray = (length = arrayLength) => {
     if (!sorting) {
-      const newArray = Array.from({ length: arrayLength }, () =>
-        Math.floor(Math.random() * arrayLength) + 1
+      const newArray = Array.from({ length }, () =>
+        Math.floor(Math.random() * 40) + 1
       );
       setArray(newArray);
+    }
+  };
+
+  const sortArrayInReverseOrder = () => {
+    if (!sorting) {
+      const reversedSortedArray = [...array].sort((a, b) => b - a);
+      setArray(reversedSortedArray);
     }
   };
 
@@ -35,15 +42,17 @@ const InsertionSortVisualization = () => {
 
   const increaseArrayLength = () => {
     if (arrayLength < 40 && !sorting) {
-      setArrayLength(prevLength => prevLength + 1);
-      generateNewArray();
+      const newArrayLength = arrayLength + 1;
+      setArrayLength(newArrayLength);
+      generateNewArray(newArrayLength);
     }
   };
 
   const decreaseArrayLength = () => {
     if (arrayLength > 5 && !sorting) {
-      setArrayLength(prevLength => prevLength - 1);
-      generateNewArray();
+      const newArrayLength = arrayLength - 1
+      setArrayLength(newArrayLength);
+      generateNewArray(newArrayLength);
     }
   };
 
@@ -95,6 +104,7 @@ const InsertionSortVisualization = () => {
             className="array-bar"
             style={{
               height: `${value * 15}px`,
+              width: `${700 / arrayLength}px`,
               backgroundColor: sorting ? "lightcoral" : "#149ad9",
             }}
           >
@@ -107,7 +117,7 @@ const InsertionSortVisualization = () => {
           className="visualization-button"
           onClick={decreaseArrayLength}
           disabled={sorting || arrayLength <= 5}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"-"}
         </button>
@@ -116,7 +126,7 @@ const InsertionSortVisualization = () => {
           className="visualization-button"
           onClick={increaseArrayLength}
           disabled={sorting || arrayLength >= 40}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"+"}
         </button>
@@ -126,7 +136,7 @@ const InsertionSortVisualization = () => {
           className="visualization-button"
           onClick={decreaseSortingTime}
           disabled={sorting || sortingTime <= 100}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"-"}
         </button>
@@ -135,7 +145,7 @@ const InsertionSortVisualization = () => {
           className="visualization-button"
           onClick={increaseSortingTime}
           disabled={sorting || sortingTime >= 2000}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"+"}
         </button>
@@ -145,15 +155,25 @@ const InsertionSortVisualization = () => {
           className="visualization-button"
           onClick={insertionSort}
           disabled={sorting || isSorted}
+          style={{ cursor: sorting ? "no-drop" : "pointer" }}
         >
           {sorting ? "Տեսակավորում..." : isSorted ? "Զանգվածը արդեն տեսակավորված է" : "Սկսել Insertion տեսակավորումը"}
         </button>
         <button
           className="visualization-button"
-          onClick={generateNewArray}
+          onClick={() => generateNewArray(arrayLength)}
           disabled={sorting}
+          style={{ cursor: sorting ? "no-drop" : "pointer" }}
         >
           Ստեղծել նոր զանգված
+        </button>
+        <button
+          className="visualization-button"
+          onClick={sortArrayInReverseOrder}
+          disabled={sorting}
+          style={{ cursor: sorting ? "no-drop" : "pointer" }}
+        >
+          Հակադարձել զանգվածը
         </button>
       </div>
     </div>

@@ -4,20 +4,27 @@ import "./MergeSort.css";
 const MergeSortVisualization = () => {
   const [array, setArray] = useState([]);
   const [sorting, setSorting] = useState(false);
-  const [arrayLength, setArrayLength] = useState(20);
+  const [arrayLength, setArrayLength] = useState(25);
   const [sortingTime, setSortingTime] = useState(500);
   const [isSorted, setIsSorted] = useState(false);
   const [itmd] = useState(Array(40).fill(0));
   const [visited, setVisited] = useState(Array(40).fill(0));
 
-  const generateNewArray = () => {
+  const generateNewArray = (length = arrayLength) => {
     if (!sorting) {
-      const newArray = Array.from({ length: arrayLength }, () =>
+      const newArray = Array.from({ length }, () =>
         Math.round(Math.random() * 39 + 1)
       );
       setArray(newArray);
-      setVisited(Array(arrayLength).fill(0)); // Reset visited array
-      setIsSorted(false); // Reset sorting state
+      setVisited(Array(arrayLength).fill(0));
+      setIsSorted(false);
+    }
+  };
+
+  const sortArrayInReverseOrder = () => {
+    if (!sorting) {
+      const reversedSortedArray = [...array].sort((a, b) => b - a);
+      setArray(reversedSortedArray);
     }
   };
 
@@ -39,13 +46,17 @@ const MergeSortVisualization = () => {
 
   const increaseArrayLength = () => {
     if (arrayLength < 40 && !sorting) {
-      setArrayLength((prevLength) => prevLength + 1);
+      const newArrayLength = arrayLength + 1;
+      setArrayLength(newArrayLength);
+      generateNewArray(newArrayLength);
     }
   };
 
   const decreaseArrayLength = () => {
     if (arrayLength > 5 && !sorting) {
-      setArrayLength((prevLength) => prevLength - 1);
+      const newArrayLength = arrayLength - 1
+      setArrayLength(newArrayLength);
+      generateNewArray(newArrayLength);
     }
   };
 
@@ -137,6 +148,7 @@ const MergeSortVisualization = () => {
             className="array-bar"
             style={{
               height: `${value * 15}px`,
+              width: `${700 / arrayLength}px`,
               backgroundColor: visited[index] ? "lightcoral" : "#149ad9",
             }}
           >
@@ -150,7 +162,7 @@ const MergeSortVisualization = () => {
           className="visualization-button"
           onClick={decreaseArrayLength}
           disabled={sorting || arrayLength <= 5}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"-"}
         </button>
@@ -159,7 +171,7 @@ const MergeSortVisualization = () => {
           className="visualization-button"
           onClick={increaseArrayLength}
           disabled={sorting || arrayLength >= 40}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"+"}
         </button>
@@ -170,7 +182,7 @@ const MergeSortVisualization = () => {
           className="visualization-button"
           onClick={decreaseSortingTime}
           disabled={sorting || sortingTime <= 100}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"-"}
         </button>
@@ -179,26 +191,35 @@ const MergeSortVisualization = () => {
           className="visualization-button"
           onClick={increaseSortingTime}
           disabled={sorting || sortingTime >= 2000}
-          style={{ margin: "0", padding: "8px 13px" }}
+          style={{ margin: "0", padding: "8px 13px", cursor: sorting ? "no-drop" : "pointer" }}
         >
           {"+"}
         </button>
       </div>
-
       <div className="controls">
         <button
           className="visualization-button"
           onClick={startMergeSort}
           disabled={sorting || isSorted}
+          style={{ cursor: sorting ? "no-drop" : "pointer" }}
         >
           {sorting ? "Տեսակավորում..." : isSorted ? "Զանգվածը արդեն տեսակավորված է" : "Սկսել Merge տեսակավորումը"}
         </button>
         <button
           className="visualization-button"
-          onClick={generateNewArray}
+          onClick={() => generateNewArray(arrayLength)}
           disabled={sorting}
+          style={{ cursor: sorting ? "no-drop" : "pointer" }}
         >
           Ստեղծել նոր զանգված
+        </button>
+        <button
+          className="visualization-button"
+          onClick={sortArrayInReverseOrder}
+          disabled={sorting}
+          style={{ cursor: sorting ? "no-drop" : "pointer" }}
+        >
+          Հակադարձել զանգվածը
         </button>
       </div>
     </div>
